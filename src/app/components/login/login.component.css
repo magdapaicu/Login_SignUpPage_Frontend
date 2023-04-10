@@ -1,0 +1,62 @@
+.outer {
+  height: 100vh;
+  background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+}
+.panel-heading {
+  text-align: 100px;
+  margin-bottom: 10px;
+}
+#forget {
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+#sign-up {
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.input {
+  border: none;
+  outline: none;
+}
+.input-field {
+  border-radius: 5px;
+  position: relative;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+.bordert {
+  border-top: 1px solid #aaa;
+  position: relative;
+  margin-top: 20px;
+}
+.bordert::after {
+  content: "or connect with";
+  position: absolute;
+  top: -13px;
+  left: 33%;
+  background-color: #fff;
+  padding: 0 8px;
+}
+
+.bordert-2 {
+  margin-top: 10px;
+}
+.icon-eye-slash {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.panel {
+  border-radius: 15px;
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.h3 {
+  margin-left: 20px;
+}
