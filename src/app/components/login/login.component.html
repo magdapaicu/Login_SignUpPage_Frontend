@@ -6,43 +6,75 @@
           <div class="panel-heading">
             <h3 class="pt-3 font-weight-bold h3">Login</h3>
           </div>
-          <div class="panel-body p-3">
-            <div class="form-group pt-3">
-              <div class="input-field form-control">
-                <span class="fa fa-user p-2"></span>
-                <input class="input" type="text" placeholder="Username" />
-              </div>
-              <div class="input-field form-control mt-2">
-                <span class="fa-solid fa-lock p-2"></span>
-                <input class="input" placeholder="Password" [type]="type" />
-                <i
-                  (click)="hiddenPassord()"
-                  class="{{ eyeIcon }} icon-eye-slash"
-                ></i>
-              </div>
-              <div class="form-inline fr mt-4">
-                <a id="forget" class="font-weight-bold">Forget Password ?</a>
-              </div>
-              <button type="submit" class="btn btn-primary w-100 mt-4">
-                Login
-              </button>
-              <div class="inline mt-4 offset-3">
-                <span>Don't have account ?</span>
-                <a id="sign-up" class="font-weight-bold" href="signup"
-                  >Sign Up</a
+          <div [formGroup]="loginForm">
+            <div class="panel-body p-3">
+              <div class="form-group pt-3">
+                <span
+                  *ngIf="
+                    !loginForm.controls['username'].valid &&
+                    loginForm.controls['username'].touched
+                  "
+                  class="text-danger"
+                  >*Username is required !</span
                 >
-              </div>
-              <div class="bordert">
-                <div class="text-center bordert-2">
-                  <a href="https://ro-ro.facebook.com/" target="_blank"
-                    ><i class="fa-brands fa-facebook fa-2x"></i
-                  ></a>
-                  <a href="https://www.google.com/" target="_blank"
-                    ><i class="fa-brands fa-google-plus fa-2x m-lg-2"></i
-                  ></a>
-                  <a href="https://github.com/" target="_blank"
-                    ><i class="fa-brands fa-github fa-2x"></i
-                  ></a>
+                <div class="input-field form-control">
+                  <span class="fa fa-user p-2"></span>
+                  <input
+                    formControlName="username"
+                    class="input"
+                    type="text"
+                    placeholder="Username"
+                  />
+                </div>
+                <span
+                  *ngIf="
+                    !loginForm.controls['password'].valid &&
+                    loginForm.controls['password'].touched
+                  "
+                  class="text-danger"
+                  >*Password is required !</span
+                >
+                <div class="input-field form-control mt-2">
+                  <span class="fa-solid fa-lock p-2"></span>
+                  <input
+                    formControlName="password"
+                    class="input"
+                    placeholder="Password"
+                    [type]="type"
+                  />
+                  <i
+                    (click)="hiddenPassord()"
+                    class="{{ eyeIcon }} icon-eye-slash"
+                  ></i>
+                </div>
+                <div class="form-inline fr mt-4">
+                  <a id="forget" class="font-weight-bold">Forget Password ?</a>
+                </div>
+                <button
+                  [disabled]="!loginForm.valid"
+                  type="submit"
+                  class="btn btn-primary w-100 mt-4"
+                >
+                  Login
+                </button>
+                <div class="inline mt-4 offset-3">
+                  <span>Don't have account ?</span>
+                  <a id="sign-up" class="font-weight-bold" href="signup"
+                    >Sign Up</a
+                  >
+                </div>
+                <div class="bordert">
+                  <div class="text-center bordert-2">
+                    <a href="https://ro-ro.facebook.com/" target="_blank"
+                      ><i class="fa-brands fa-facebook fa-2x"></i
+                    ></a>
+                    <a href="https://www.google.com/" target="_blank"
+                      ><i class="fa-brands fa-google-plus fa-2x m-lg-2"></i
+                    ></a>
+                    <a href="https://github.com/" target="_blank"
+                      ><i class="fa-brands fa-github fa-2x"></i
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>

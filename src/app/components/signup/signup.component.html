@@ -6,37 +6,104 @@
           <div class="panel-heading">
             <h3 class="pt-3 font-weight-bold h3 text-center">Sign Up</h3>
           </div>
-          <div class="panel-body">
-            <div class="input-field form-control">
-              <i class="fa-solid fa-user" style="color: #6a96e2"></i>
-              <input class="input" type="text" placeholder="FirstName" />
-            </div>
-            <div class="input-field form-control">
-              <i class="fa-regular fa-user" style="color: #6a96e2"></i>
-              <input class="input" type="text" placeholder="LastName" />
-            </div>
-            <div class="input-field form-control">
-              <i class="fa-solid fa-envelope" style="color: #6a96e2"></i>
-              <input class="input" type="text" placeholder="Email" />
-            </div>
-            <div class="input-field form-control">
-              <i class="fa-solid fa-user-tie" style="color: #6a96e2"></i>
-              <input class="input" type="text" placeholder="Username" />
-            </div>
-            <div class="input-field form-control">
-              <i class="fa-solid fa-lock" style="color: #6a96e2"></i>
-              <input class="input" [type]="type" placeholder="Password" />
-              <i
-                (click)="hiddenPassord()"
-                class="{{ eyeIcon }} icon-eye-slash"
-              ></i>
-            </div>
-            <div>
-              <button class="btn btn-primary w-100 mt-4">Sign Up</button>
-            </div>
-            <div class="text-center mt-4">
-              <span>Already have account? </span>
-              <a id="login" href="login">Login</a>
+          <div [formGroup]="signUpForm">
+            <div class="panel-body">
+              <span
+                class="text-danger"
+                *ngIf="
+                  !signUpForm.controls['firstname'].valid &&
+                  signUpForm.controls['firstname'].touched
+                "
+                >*First Name is required!</span
+              >
+              <div class="input-field form-control">
+                <i class="fa-solid fa-user" style="color: #6a96e2"></i>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="FirstName"
+                  formControlName="firstname"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="
+                  !signUpForm.controls['lastname'].valid &&
+                  signUpForm.controls['lastname'].touched
+                "
+                >*Last Name is required!</span
+              >
+              <div class="input-field form-control">
+                <i class="fa-regular fa-user" style="color: #6a96e2"></i>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="LastName"
+                  formControlName="lastname"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="
+                  !signUpForm.controls['email'].valid &&
+                  signUpForm.controls['email'].touched
+                "
+                >*Email is required!</span
+              >
+              <div class="input-field form-control">
+                <i class="fa-solid fa-envelope" style="color: #6a96e2"></i>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="
+                  !signUpForm.controls['username'].valid &&
+                  signUpForm.controls['username'].touched
+                "
+                >*Username is required!</span
+              >
+              <div class="input-field form-control">
+                <i class="fa-solid fa-user-tie" style="color: #6a96e2"></i>
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Username"
+                  formControlName="username"
+                />
+              </div>
+              <span
+                class="text-danger"
+                *ngIf="
+                  !signUpForm.controls['password'].valid &&
+                  signUpForm.controls['password'].touched
+                "
+                >*Password is required!</span
+              >
+              <div class="input-field form-control">
+                <i class="fa-solid fa-lock" style="color: #6a96e2"></i>
+                <input
+                  class="input"
+                  [type]="type"
+                  placeholder="Password"
+                  formControlName="password"
+                />
+                <i
+                  (click)="hiddenPassord()"
+                  class="{{ eyeIcon }} icon-eye-slash"
+                ></i>
+              </div>
+              <div>
+                <button class="btn btn-primary w-100 mt-4">Sign Up</button>
+              </div>
+              <div class="text-center mt-4">
+                <span>Already have account? </span>
+                <a id="login" href="login">Login</a>
+              </div>
             </div>
           </div>
         </div>
