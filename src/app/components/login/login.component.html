@@ -51,6 +51,7 @@
                   <a id="forget" class="font-weight-bold">Forget Password ?</a>
                 </div>
                 <button
+                  (click)="login(loginForm)"
                   [disabled]="!loginForm.valid"
                   type="submit"
                   class="btn btn-primary w-100 mt-4"
