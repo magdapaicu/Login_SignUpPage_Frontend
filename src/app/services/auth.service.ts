@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +15,8 @@ export class AuthService {
 
   login(userObj: any) {
     return this.http.post(`${this.baseUrl}authenticate`, userObj);
+  }
+  getUsers(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}users`);
   }
 }

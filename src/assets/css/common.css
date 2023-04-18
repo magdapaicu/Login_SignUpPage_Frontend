@@ -31,21 +31,20 @@
 
 .bordert {
   border-top: 1px solid #aaa;
-  position: relative;
+  margin-top: 20px;
+}
+.bordert-2 {
   margin-top: 20px;
 }
 .bordert::after {
   content: "or connect with";
   position: absolute;
-  top: -13px;
-  left: 33%;
+  left: 36%;
   background-color: #fff;
   padding: 0 8px;
+  margin-top: -82px;
 }
 
-.bordert-2 {
-  margin-top: 10px;
-}
 .icon-eye-slash {
   position: absolute;
   right: 0;
@@ -74,4 +73,9 @@
 }
 .input-field i {
   margin: 5px;
+}
+.snackBarPanelClass {
+  position: fixed !important;
+  z-index: 1000 !important;
+  top: 10 !important;
 }

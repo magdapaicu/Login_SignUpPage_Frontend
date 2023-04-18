@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -13,8 +20,14 @@ export class SignupComponent implements OnInit {
   eyeIcon: string = 'fa-solid fa-eye-slash';
   signUpForm!: FormGroup;
   users: any[] = [];
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
@@ -35,8 +48,21 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(signUpForm: FormGroup) {
-    this.authService.signUp(signUpForm.value).subscribe((resp) => {
-      console.log(resp);
+    this.authService.signUp(signUpForm.value).subscribe({
+      error: (error) => {
+        const errorMessage = error.error.message;
+        console.log(errorMessage);
+        this.openSnackBar(errorMessage, '');
+      },
     });
+  }
+
+  openSnackBar(message: string, action: string) {
+    let config: MatSnackBarConfig = new MatSnackBarConfig();
+    config.panelClass = ['snackBarPanelClass'];
+    config.duration = 2000;
+    config.verticalPosition = this.verticalPosition;
+
+    this._snackBar.open(message, action, config);
   }
 }
