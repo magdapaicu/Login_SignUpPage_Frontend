@@ -11,10 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
-import { GuardsComponent } from './guards/guards.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent, GuardsComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

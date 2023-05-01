@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('Token: ' + this.authService.getToken());
+    console.log('IsLogedIn la inceput: ' + this.authService.isLoggedIn());
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -36,10 +38,14 @@ export class LoginComponent implements OnInit {
       : (this.eyeIcon = 'fa-solid fa-eye-slash');
     this.isText ? (this.type = 'text') : (this.type = 'password');
   }
+
   login(loginForm: FormGroup) {
     return this.authService.login(loginForm.value).subscribe({
-      next: () => {
+      next: (resp: any) => {
         this.router.navigate(['home']);
+        this.authService.storeToken(resp.token);
+        console.log('Get Token: ' + this.authService.getToken());
+        console.log('Is LogedIn dupa ' + this.authService.isLoggedIn());
       },
       error: (error) => {
         const errorMessage = error.error.message;

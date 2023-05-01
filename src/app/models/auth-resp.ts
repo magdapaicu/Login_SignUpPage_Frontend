@@ -1,3 +1,0 @@
-interface AuthResponse {
-  Message: string;
-}

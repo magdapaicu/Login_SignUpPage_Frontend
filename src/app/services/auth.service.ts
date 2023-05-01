@@ -16,7 +16,20 @@ export class AuthService {
   login(userObj: any) {
     return this.http.post(`${this.baseUrl}authenticate`, userObj);
   }
+
   getUsers(): Observable<string[]> {
     return this.http.get<string[]>(`${this.baseUrl}users`);
+  }
+
+  storeToken(tokenValue: string) {
+    localStorage.setItem('token', tokenValue);
+  }
+
+  getToken() {
+    return localStorage.getItem('token') ?? ''; // e aceeasi cheie utilizata pentru a stoca tokenul
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
   }
 }
